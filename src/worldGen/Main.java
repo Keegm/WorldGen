@@ -51,10 +51,10 @@ public class Main {
         new Timer(16, e -> {
         	int dx = 0, dy = 0;
         	
-        	if (up) dy = -5;
-        	if (down) dy = 5;
-        	if (left) dx = -5;
-        	if (right) dx = 5;
+        	if (up) dy = -2;
+        	if (down) dy = 2;
+        	if (left) dx = -2;
+        	if (right) dx = 2;
         	
         	if (dx != 0 || dy != 0) {
         		panel.moveCamera(dx, dy);

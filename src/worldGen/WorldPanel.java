@@ -38,6 +38,12 @@ public class WorldPanel extends JPanel {
 				g.fillRect(sx * tileSize, sy * tileSize, tileSize, tileSize);
 			}
 		}
+		
+		g.setColor(Color.BLACK);
+		int px = getWidth() / 2 - tileSize / 2;
+		int py = getHeight() / 2 - tileSize / 2;
+		
+		g.fillRect(px, py, tileSize, tileSize + 6);
 	}
 	
 	public void moveCamera(int dx, int dy) {

@@ -12,8 +12,7 @@ public class Generator {
     	float scale = .1f;
         float n = fractalNoise(x * scale, y * scale);
         
-        System.out.println(n);
-        
+
         if (n < 0.35f) return Tile.WATER;
         if (n < 0.45f) return Tile.SAND;
         if (n < 0.65f) return Tile.ROCK;
