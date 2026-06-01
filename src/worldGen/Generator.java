@@ -50,7 +50,7 @@ public class Generator {
     	float v11 = random2D(ix + 1, iy + 1);
     	
     	float i1 = lerp(v00, v10, fade(fx));
-    	float i2 = lerp(v01, v11, fade(fy));
+    	float i2 = lerp(v01, v11, fade(fx));
     	
     	return lerp(i1, i2, fade(fy));
     	
