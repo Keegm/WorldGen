@@ -9,14 +9,14 @@ public class Generator {
     }
 
     public Tile getTile(int x, int y) {
-    	float scale = .1f;
+    	float scale = .05f;
         float n = fractalNoise(x * scale, y * scale);
         
 
         if (n < 0.35f) return Tile.WATER;
         if (n < 0.45f) return Tile.SAND;
-        if (n < 0.65f) return Tile.ROCK;
-        return Tile.GRASS;
+        if (n < 0.65f) return Tile.GRASS;
+        return Tile.ROCK;
         
     }
 

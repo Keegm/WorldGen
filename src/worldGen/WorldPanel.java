@@ -6,8 +6,8 @@ import java.awt.*;
 public class WorldPanel extends JPanel {
 	private World world;
 	
-	private int cameraX = 0;
-	private int cameraY = 0;
+	private float cameraX = 0;
+	private float cameraY = 0;
 	private int tileSize = 10;
 	private int dimX = 1920;
 	private int dimY = 1080;
@@ -20,14 +20,17 @@ public class WorldPanel extends JPanel {
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
+    	int baseX = (int)Math.floor(cameraX);
+    	int baseY = (int)Math.floor(cameraY);
 		
 		for(int sy = 0; sy < dimY / tileSize; sy++) {
 			for (int sx = 0; sx < dimX / tileSize; sx++) {
 				
-				int worldX = cameraX + sx;
-				int worldY = cameraY + sy;
+				int worldX = baseX + sx;
+				int worldY = baseY + sy;
 				
 				Tile t = world.tileAt(worldX, worldY);
+				
 				switch (t) {
 					case GRASS -> g.setColor(new Color(18, 204, 9));
 					case ROCK -> g.setColor(Color.GRAY);
@@ -46,9 +49,17 @@ public class WorldPanel extends JPanel {
 		g.fillRect(px, py, tileSize, tileSize + 6);
 	}
 	
-	public void moveCamera(int dx, int dy) {
+	public void moveCamera(double dx, double dy) {
 		cameraX += dx;
 		cameraY += dy;
 		repaint();
+	}
+	
+	public float camX() {
+		return cameraX;
+	}
+	
+	public float camY() {
+		return cameraX;
 	}
 }

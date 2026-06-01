@@ -8,6 +8,7 @@ import javax.swing.*;
 public class Main {
 	
 	private static boolean up, down, left, right;
+	private static float speed = 1;
 
     public static void main(String[] args) {
         World world = new World();
@@ -49,12 +50,17 @@ public class Main {
         });
         
         new Timer(16, e -> {
-        	int dx = 0, dy = 0;
+        	float dx = 0, dy = 0;
         	
-        	if (up) dy = -2;
-        	if (down) dy = 2;
-        	if (left) dx = -2;
-        	if (right) dx = 2;
+        	if (up) dy = -speed;
+        	if (down) dy = speed;
+        	if (left) dx = -speed;
+        	if (right) dx = speed;
+        	
+        	int baseX = (int)Math.floor(panel.camX());
+        	int baseY = (int)Math.floor(panel.camY());
+        	if (world.tileAt(baseX, baseY) == Tile.WATER) speed = 0.5f;
+        	else speed = 1;
         	
         	if (dx != 0 || dy != 0) {
         		panel.moveCamera(dx, dy);
