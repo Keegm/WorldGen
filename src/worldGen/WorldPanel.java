@@ -29,7 +29,7 @@ public class WorldPanel extends JPanel {
 				
 				Tile t = world.tileAt(worldX, worldY);
 				switch (t) {
-					case GRASS -> g.setColor(Color.GREEN);
+					case GRASS -> g.setColor(new Color(18, 204, 9));
 					case ROCK -> g.setColor(Color.GRAY);
 					case WATER -> g.setColor(Color.BLUE);
 					case SAND -> g.setColor(Color.YELLOW);

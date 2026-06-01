@@ -5,7 +5,7 @@ public class World {
     private Generator generator;
 
     public World() {
-        generator = new Generator(655043227);
+        generator = new Generator(655045427);
     }
 
 
