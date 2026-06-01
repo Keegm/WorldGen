@@ -1,5 +1,5 @@
 package worldGen;
 
 public enum Tile {
-    GRASS, ROCK, WATER
+    GRASS, ROCK, WATER, SAND
 }

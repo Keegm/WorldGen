@@ -5,7 +5,7 @@ public class World {
     private Generator generator;
 
     public World() {
-        generator = new Generator(655043217);
+        generator = new Generator(655043227);
     }
 
 
@@ -13,6 +13,8 @@ public class World {
 
         return generator.getTile(x, y);
     }
+    
+    
 
     
 
