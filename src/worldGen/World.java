@@ -57,6 +57,30 @@ public class World {
     	chunks.remove(oldestKey);
     }
     
+    public void place(float clickX, float clickY, int brushRadius) {
+    	int roundX = (int)Math.floor(clickX);
+    	int roundY = (int)Math.floor(clickY);
+    	
+    	for(int dx = -brushRadius; dx <= brushRadius; dx++) {
+    		for (int dy = -brushRadius; dy <= brushRadius; dy++) {
+    	    	int chunkX = Math.floorDiv(roundX + dx, Chunk.SIZE);
+    	    	int chunkY = Math.floorDiv(roundY + dy, Chunk.SIZE);
+    	    	
+    	    	//Query the Chunk
+    	    	Chunk chunk = getOrCreateChunk(chunkX, chunkY);
+    	    	
+    	    	int localX = Math.floorMod(roundX + dx,  Chunk.SIZE);
+    	    	int localY = Math.floorMod(roundY + dy, Chunk.SIZE);
+    	    	
+    	    	chunk.setTile(localX, localY);
+    		}
+    	}
+
+
+
+    	
+    }
+    
     
 
     

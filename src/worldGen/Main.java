@@ -2,14 +2,20 @@ package worldGen;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.*;
 
 public class Main {
 	
 	private static boolean up, down, left, right, sprint;
+	private static boolean lClick;
+	private static float clickX, clickY;
 	private static float speed = 1;
 
+	private static int brushRadius = 4;
+	
     public static void main(String[] args) {
         World world = new World();
         WorldPanel panel = new WorldPanel(world);
@@ -49,6 +55,36 @@ public class Main {
         		
         		}
         	}
+        	
+        });
+        
+        panel.addMouseListener(new MouseAdapter() {
+        	
+        	public void mousePressed(MouseEvent m) {
+        		if (m.getButton() == MouseEvent.BUTTON1) {
+        			lClick = true;
+        		}
+        	}
+        	
+        	public void mouseDragged(MouseEvent m) {
+        		clickX = m.getX();
+        		clickY = m.getY();
+        		System.out.println("DREAGGED");
+        	}
+        	
+        	public void mouseReleased(MouseEvent m) {
+        		if (m.getButton() == MouseEvent.BUTTON1) {
+        			lClick = false;
+        		}
+        	}
+        	
+        });
+        
+        panel.addMouseMotionListener(new MouseAdapter() {
+        	public void mouseDragged(MouseEvent m) {
+        		clickX = m.getX();
+        		clickY = m.getY();
+        	}
         });
         
         new Timer(16, e -> {
@@ -80,6 +116,16 @@ public class Main {
         	//Check Top Right and Bottom Right
         	if (right && world.tileAt(pX + WorldPanel.TILE_SIZE * 5 + 1, pY) != Tile.ROCK
         			&& world.tileAt(pX + WorldPanel.TILE_SIZE * 5 + 1, pY + WorldPanel.TILE_SIZE * 10) != Tile.ROCK) dx = speed;
+        	
+        	
+        	//Placing
+        	if (lClick) {
+        		float worldX = panel.camX() + (clickX / panel.TILE_SIZE());
+        		float worldY = panel.camY() + (clickY / panel.TILE_SIZE());
+        		
+        		world.place(worldX, worldY, brushRadius);
+        		panel.repaint();
+        	}
         	
 
         	

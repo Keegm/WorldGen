@@ -78,4 +78,10 @@ public class Chunk {
 		g.dispose();
 		
 	}
+	
+	public void setTile(int x, int y) {
+		tiles[x][y] = Tile.ROCK;
+		
+		renderChunkImage();
+	}
 }
