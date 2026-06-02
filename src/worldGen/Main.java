@@ -66,7 +66,7 @@ public class Main {
         	else speed = 2;
         	
         	if (sprint) speed += 1;
-        	else speed = 1;
+        	else speed = 2;
         	
         	//Check Top Left and Right
         	if (up && world.tileAt(pX, pY - 1) != Tile.ROCK 
@@ -90,7 +90,6 @@ public class Main {
 
         	
         	if (dx != 0 || dy != 0) {
-        		System.out.println(dx);
         		panel.moveCamera(dx, dy);
         	}
         }).start();

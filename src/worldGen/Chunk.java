@@ -10,6 +10,8 @@ public class Chunk {
 	private final int y;
 	public static final int SIZE = 32;
 	
+	public long timeLastUsed;
+	
 	private BufferedImage image;
 	
 	
@@ -18,6 +20,8 @@ public class Chunk {
 		tiles = new Tile[SIZE][SIZE];
 		this.x = x;
 		this.y = y;
+		
+		timeLastUsed = System.nanoTime();
 		
 		generate(generator);
 		renderChunkImage();
@@ -40,6 +44,10 @@ public class Chunk {
 	
 	public Tile getTile(int localX, int localY) {
 		return tiles[localX][localY];
+	}
+	
+	public boolean equals(int cx, int cy) {
+		return x == cx && y == cy;
 	}
 	
 	public void renderChunkImage() {
