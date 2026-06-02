@@ -9,7 +9,7 @@ public class Generator {
     }
 
     public Tile getTile(int x, int y) {
-    	float scale = .05f;
+    	float scale = .030f;
         float n = fractalNoise(x * scale, y * scale);
         
 

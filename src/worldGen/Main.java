@@ -57,10 +57,15 @@ public class Main {
         	if (left) dx = -speed;
         	if (right) dx = speed;
         	
-        	int baseX = (int)Math.floor(panel.camX());
-        	int baseY = (int)Math.floor(panel.camY());
-        	if (world.tileAt(baseX, baseY) == Tile.WATER) speed = 0.5f;
-        	else speed = 1;
+        	int tilesX = panel.getWidth() / panel.TILE_SIZE;
+        	int tilesY = panel.getHeight() / panel.TILE_SIZE();
+        	
+        	int pX = (int)Math.floor(panel.camX() + (panel.getWidth() / 2f) / panel.TILE_SIZE());
+        	int pY = (int)Math.floor(panel.camY() + (panel.getHeight() / 2f) / panel.TILE_SIZE());
+
+        	Tile tile = world.tileAt(pX, pY);
+        	if (tile == Tile.WATER) speed = 1;
+        	else speed = 2;
         	
         	if (dx != 0 || dy != 0) {
         		panel.moveCamera(dx, dy);
