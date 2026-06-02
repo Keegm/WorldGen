@@ -12,6 +12,7 @@ public class Main {
 	private static boolean up, down, left, right, sprint;
 	private static boolean lClick;
 	private static float clickX, clickY;
+	private static Tile tileType = Tile.ROCK;
 	private static float speed = 1;
 
 	private static int brushRadius = 4;
@@ -64,7 +65,14 @@ public class Main {
         		if (m.getButton() == MouseEvent.BUTTON1) {
         			lClick = true;
         		}
+        		if (m.getButton() == MouseEvent.BUTTON2) {
+        			tileType = tileType.next();
+        			System.out.println("RightClicked" + " " + tileType);
+        			
+        		}
         	}
+        	
+        	
         	
         	public void mouseDragged(MouseEvent m) {
         		clickX = m.getX();
@@ -123,7 +131,7 @@ public class Main {
         		float worldX = panel.camX() + (clickX / panel.TILE_SIZE());
         		float worldY = panel.camY() + (clickY / panel.TILE_SIZE());
         		
-        		world.place(worldX, worldY, brushRadius);
+        		world.place(worldX, worldY, brushRadius, tileType);
         		panel.repaint();
         	}
         	

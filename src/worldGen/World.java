@@ -57,7 +57,7 @@ public class World {
     	chunks.remove(oldestKey);
     }
     
-    public void place(float clickX, float clickY, int brushRadius) {
+    public void place(float clickX, float clickY, int brushRadius, Tile tileType) {
     	int roundX = (int)Math.floor(clickX);
     	int roundY = (int)Math.floor(clickY);
     	
@@ -72,7 +72,7 @@ public class World {
     	    	int localX = Math.floorMod(roundX + dx,  Chunk.SIZE);
     	    	int localY = Math.floorMod(roundY + dy, Chunk.SIZE);
     	    	
-    	    	chunk.setTile(localX, localY);
+    	    	chunk.setTile(localX, localY, tileType);
     		}
     	}
 

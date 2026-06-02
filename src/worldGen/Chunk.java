@@ -79,8 +79,8 @@ public class Chunk {
 		
 	}
 	
-	public void setTile(int x, int y) {
-		tiles[x][y] = Tile.ROCK;
+	public void setTile(int x, int y, Tile tileType) {
+		tiles[x][y] = tileType;
 		
 		renderChunkImage();
 	}
