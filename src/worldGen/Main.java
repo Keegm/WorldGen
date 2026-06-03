@@ -63,6 +63,8 @@ public class Main {
         	
         	public void mousePressed(MouseEvent m) {
         		if (m.getButton() == MouseEvent.BUTTON1) {
+        			clickX = m.getX();
+            		clickY = m.getY();
         			lClick = true;
         		}
         		if (m.getButton() == MouseEvent.BUTTON2) {
